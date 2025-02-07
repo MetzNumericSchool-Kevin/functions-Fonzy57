@@ -16,7 +16,7 @@ const inventaire = [
     id: "potion_soin", // identifiant unique de la potion
     price: 10,
     stock: 0,
-  },
+  }
 ];
 
 /* --------- */
@@ -62,3 +62,29 @@ const firePotion = createPotion("Potion de feu", 10, 7);
 
 console.log(innPotion);
 console.log(firePotion);
+
+/* -------------------------------------------- */
+/* Ajout de nouvelles potions dans l'inventaire */
+/* -------------------------------------------- */
+
+const addPotionToInventory = (inventory, potion) => {
+  let existingPotion = inventory.find(item => item.id === potion.id);
+
+  if (existingPotion) {
+    existingPotion.stock += potion.stock;
+    existingPotion.price = potion.price;
+  } else {
+    inventory.push({ ...potion });
+  }
+};
+
+console.log("Avant :", inventaire);
+addPotionToInventory(inventaire, firePotion);
+inventaire.sort();
+addPotionToInventory(inventaire, {
+  id: "potion_soin",
+  price: 20,
+  stock: 10,
+});
+inventaire.sort();
+console.log("Après ajout de Fire Potion :", inventaire);
