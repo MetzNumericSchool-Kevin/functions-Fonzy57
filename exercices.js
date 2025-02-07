@@ -43,6 +43,22 @@ const potionPrice = (potionId, inventory, quantity = 1) => {
   }
 };
 
-console.log(potionPrice("potion_soin", inventaire, 4));
+console.log(potionPrice("potion_soin", inventaire));
+console.log(potionPrice("potion_soin", inventaire, 3));
 
+/* --------------------- */
+/* Fabrication de potion */
+/* --------------------- */
+const createPotion = (id, price, stock) => {
+  return {
+    id,
+    price,
+    stock,
+  };
+};
 
+const innPotion = createPotion("Potion de foyer", 50, 2);
+const firePotion = createPotion("Potion de feu", 10, 7);
+
+console.log(innPotion);
+console.log(firePotion);
