@@ -49,6 +49,7 @@ console.log(potionPrice("potion_soin", inventaire, 3));
 /* --------------------- */
 /* Fabrication de potion */
 /* --------------------- */
+
 const createPotion = (id, price, stock) => {
   return {
     id,
@@ -80,11 +81,30 @@ const addPotionToInventory = (inventory, potion) => {
 
 console.log("Avant :", inventaire);
 addPotionToInventory(inventaire, firePotion);
+addPotionToInventory(inventaire, innPotion);
 inventaire.sort();
-addPotionToInventory(inventaire, {
+/* addPotionToInventory(inventaire, {
   id: "potion_soin",
   price: 20,
   stock: 10,
-});
+}); */
 inventaire.sort();
 console.log("Après ajout de Fire Potion :", inventaire);
+
+/* ------------------------------ */
+/* Cherche moi les potions qui... */
+/* ------------------------------ */
+
+const getPotionsInStock = (inventory) => {
+  return inventory.filter(item => item.stock > 0);
+};
+
+const stockTest = getPotionsInStock(inventaire);
+console.log(stockTest);
+
+const getPotionsOutOfStock = (inventory) => {
+  return inventory.filter(item => item.stock === 0);
+};
+console.log(getPotionsOutOfStock(inventaire));
+
+console.log(inventaire);
